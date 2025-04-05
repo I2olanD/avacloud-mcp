@@ -1,0 +1,9 @@
+{
+  "name": "avacloud-mcp",
+  "type": "module",
+  "dependencies": {
+    "@dangl/avacloud-client-node": "^1.31.0",
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "zod": "^3.24.2"
+  }
+}
