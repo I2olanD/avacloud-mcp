@@ -1,6 +1,9 @@
 import process from "node:process";
 
-import { AvaConversionApi, GaebConversionApi } from "@dangl/avacloud-client-node";
+import {
+  AvaConversionApi,
+  GaebConversionApi,
+} from "@dangl/avacloud-client-node";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
@@ -21,10 +24,10 @@ const setupClients = async () => {
   );
 
   gaebConversionClient.accessToken = accessToken;
-  gaebConversionClient.basePath = avacloudBaseUrl;
-  
+  gaebConversionClient.basePath = avacloudBaseUrl ?? "";
+
   avaConversionClient.accessToken = accessToken;
-  avaConversionClient.basePath = avacloudBaseUrl;
+  avaConversionClient.basePath = avacloudBaseUrl ?? "";
 };
 
 const server = new McpServer({
@@ -52,10 +55,9 @@ server.tool(
         ],
       };
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error 
-        ? error.message 
-        : 'Unknown error occurred';
-      
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error occurred";
+
       return {
         content: [
           {
@@ -89,10 +91,9 @@ server.tool(
         ],
       };
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error 
-        ? error.message 
-        : 'Unknown error occurred';
-      
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error occurred";
+
       return {
         content: [
           {
@@ -115,9 +116,10 @@ server.tool(
     try {
       // Parse the JSON string to ensure it's valid
       const avaData = JSON.parse(avaJson);
-      
+
       // Convert AVA JSON to GAEB
-      const { result } = await avaConversionClient.avaConversionConvertToGaeb(avaData);
+      const { result } =
+        await avaConversionClient.avaConversionConvertToGaeb(avaData);
 
       return {
         content: [
@@ -128,10 +130,9 @@ server.tool(
         ],
       };
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error 
-        ? error.message 
-        : 'Unknown error occurred';
-      
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error occurred";
+
       return {
         content: [
           {

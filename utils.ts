@@ -1,11 +1,13 @@
 import { FileParameter } from "@dangl/avacloud-client-node";
 
 export async function getOAuth2AccessToken(
-  clientId: string,
-  clientSecret: string,
-  identityTokenUrl: string,
-): Promise<string> {
+  clientId: string | undefined,
+  clientSecret: string | undefined,
+  identityTokenUrl: string | undefined,
+): Promise<string | null> {
   try {
+    if (clientId == undefined || clientSecret == undefined || identityTokenUrl == undefined) return null;
+
     const tokenResponseRaw = await fetch(identityTokenUrl, {
       method: "POST",
       body: "grant_type=client_credentials&scope=avacloud",
@@ -43,4 +45,3 @@ export function getGaebFile(gaebInputFile: string): FileParameter {
 
   return fileParam;
 }
-
