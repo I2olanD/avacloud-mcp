@@ -1,0 +1,62 @@
+{
+  "dxt_version": "0.1",
+  "name": "avacloud-mcp",
+  "version": "1.0.0",
+  "description": "Turns GAEB into JSON",
+  "author": {
+    "name": "Roland Wallner",
+    "email": "rolandolah@icloud.com"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "./dist/main.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/main.js"
+      ],
+      "env": {}
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=16.0.0"
+    }
+  },
+  "user_config": {
+    "clientId": {
+      "type": "string",
+      "title": "Client ID",
+      "description": "Client ID",
+      "required": true,
+      "sensitive": false
+    },
+    "clientSecret": {
+      "type": "string",
+      "title": "Client Secret",
+      "description": "Client Secret",
+      "required": true,
+      "sensitive": true
+    },
+    "tokenUrl": {
+      "type": "string",
+      "title": "Token URL",
+      "description": "Token URL",
+      "required": true,
+      "sensitive": false
+    },
+    "avacloudBaseUrl": {
+      "type": "string",
+      "title": "Avacloud Base URL",
+      "description": "Base URL for AvaCloud",
+      "required": true,
+      "sensitive": false
+    }
+  },
+  "license": "MIT"
+}

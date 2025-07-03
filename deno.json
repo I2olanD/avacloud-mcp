@@ -1,9 +1,0 @@
-{
-  "tasks": {
-    "dev": "deno run --watch main.ts"
-  },
-  "imports": {
-    "@dangl/avacloud-client-node": "npm:@dangl/avacloud-client-node@^1.31.0",
-    "@std/assert": "jsr:@std/assert@1"
-  }
-}

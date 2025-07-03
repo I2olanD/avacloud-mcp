@@ -1,4 +1,5 @@
 import { FileParameter } from "@dangl/avacloud-client-node";
+import * as fs from "node:fs";
 
 export async function getOAuth2AccessToken(
   clientId: string | undefined,
@@ -6,7 +7,12 @@ export async function getOAuth2AccessToken(
   identityTokenUrl: string | undefined,
 ): Promise<string | null> {
   try {
-    if (clientId == undefined || clientSecret == undefined || identityTokenUrl == undefined) return null;
+    if (
+      clientId == undefined ||
+      clientSecret == undefined ||
+      identityTokenUrl == undefined
+    )
+      return null;
 
     const tokenResponseRaw = await fetch(identityTokenUrl, {
       method: "POST",
@@ -24,7 +30,7 @@ export async function getOAuth2AccessToken(
       );
     }
 
-    const jsonResponse = await tokenResponseRaw.json();
+    const jsonResponse = await tokenResponseRaw.json() as { access_token: string };
     const accessToken = jsonResponse["access_token"];
     if (!accessToken) {
       throw new Error("Failed to obtain an access token");
@@ -37,7 +43,7 @@ export async function getOAuth2AccessToken(
 }
 
 export function getGaebFile(gaebInputFile: string): FileParameter {
-  const gaebFileBuffer = Deno.readFileSync(gaebInputFile);
+  const gaebFileBuffer = fs.readFileSync(gaebInputFile);
   const fileParam: FileParameter = {
     data: new Blob([gaebFileBuffer]),
     fileName: "GAEBXML_EN.X86",
