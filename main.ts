@@ -1,7 +1,4 @@
 import fetch from "node-fetch";
-if (!globalThis.fetch) {
-  globalThis.fetch = fetch as any;
-}
 
 import process from "node:process";
 
@@ -15,6 +12,10 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 
 import { getGaebFile, getOAuth2AccessToken } from "./utils.js";
+
+if (!globalThis.fetch) {
+  globalThis.fetch = fetch as any;
+}
 
 const { clientId, clientSecret, tokenUrl, avacloudBaseUrl } = process.env;
 
