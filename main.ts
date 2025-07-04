@@ -26,7 +26,7 @@ const setupClients = async () => {
   const accessToken = await getOAuth2AccessToken(
     clientId,
     clientSecret,
-    tokenUrl,
+    tokenUrl
   );
 
   gaebConversionClient.accessToken = accessToken;
@@ -74,7 +74,7 @@ server.tool(
         isError: true,
       };
     }
-  },
+  }
 );
 
 server.tool(
@@ -85,8 +85,9 @@ server.tool(
 
     try {
       const fileParam = getGaebFile(file);
-      const { result } =
-        await gaebConversionClient.gaebConversionConvertToAva(fileParam);
+      const { result } = await gaebConversionClient.gaebConversionConvertToAva(
+        fileParam
+      );
 
       return {
         content: [
@@ -110,7 +111,7 @@ server.tool(
         isError: true,
       };
     }
-  },
+  }
 );
 
 server.tool(
@@ -124,8 +125,9 @@ server.tool(
       const avaData = JSON.parse(avaJson);
 
       // Convert AVA JSON to GAEB
-      const { result } =
-        await avaConversionClient.avaConversionConvertToGaeb(avaData);
+      const { result } = await avaConversionClient.avaConversionConvertToGaeb(
+        avaData
+      );
 
       return {
         content: [
@@ -149,7 +151,7 @@ server.tool(
         isError: true,
       };
     }
-  },
+  }
 );
 
 const transport = new StdioServerTransport();
