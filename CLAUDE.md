@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Development
 - `yarn dev` - Run TypeScript compiler in watch mode
 - `yarn build` - Build the TypeScript project
+- `yarn zip` - Package using dxt (creates MCP extension package)
 - `node dist/main.js` - Run the compiled server
 
 ### Environment Setup
@@ -42,6 +43,8 @@ This is an MCP (Model Context Protocol) server that provides GAEB/AVA file conve
 ### Development Notes
 
 - This project uses npm/yarn to manage dependencies
+- Requires Node.js >=20.0.0
 - No test framework is currently configured
 - The project follows MCP server patterns from `@modelcontextprotocol/sdk`
+- Uses DXT (dxt) for packaging MCP extensions via `manifest.json`
 - GAEB and AVA are industry-standard formats for construction/billing data exchange
